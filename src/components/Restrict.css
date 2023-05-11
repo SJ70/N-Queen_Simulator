@@ -1,0 +1,7 @@
+.Restrict {
+    width: 100%;
+    max-width: 1150px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
