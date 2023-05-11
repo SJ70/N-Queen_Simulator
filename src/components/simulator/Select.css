@@ -13,6 +13,7 @@ p {
 }
 .Code p {
     font-weight: 500;
+    margin-top: -.2rem;
 }
 
 .Title {

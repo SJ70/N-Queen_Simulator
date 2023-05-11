@@ -1,37 +1,39 @@
 import React from 'react';
 import "./Select.css";
+import Problem from '../../class/Problem';
 
-const Select = () => {
-  return (
-    <div className="Select">
-        <Code/>
-        <Title/>
-        <Description/>
-    </div>
-  );
+const Select = ({prob}: {prob: Problem}) => {
+
+    return (
+        <div className="Select">
+            <Code code={prob.getCode()}/>
+            <Title title={prob.getTitle()}/>
+            <Description desc={prob.getDesc()}/>
+        </div>
+    );
 }
 
-const Code = () => {
+const Code = ({code}: {code: number}) => {
     return (
         <div className="Code">
-            <p>1000</p>
+            <p>{code}</p>
         </div>
     )
 }
 
-const Title = () => {
+const Title = ({title}: {title: string}) => {
     return (
         <div className="Title">
             <img src={ require("../../img/b1.png") }/>
-            <p>A+B</p>
+            <p>{title}</p>
         </div>
     )
 }
 
-const Description = () => {
+const Description = ({desc}: {desc: string}) => {
     return (
         <div className="Description">
-            <p>횟수가 제한된 버블정렬</p>
+            <p>{desc}</p>
         </div>
     )
 }
