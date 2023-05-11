@@ -1,0 +1,41 @@
+p {
+    margin: 0;
+}
+
+.Select {
+    border: 1px solid var(--light-gray);
+    padding: .75rem 1rem .75rem 1rem;
+}
+
+.Code {
+    color: var(--gray);
+    font-size: .9rem;
+}
+.Code p {
+    font-weight: 500;
+}
+
+.Title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: .2rem 0 .2rem 0;
+}
+.Title img {
+    width: 2.1rem;
+    height: 2.1rem;
+    margin-left: -.21rem;
+    object-fit: contain;
+}
+.Title p {
+    color: var(--darker-gray);
+    margin: 0 0 .3rem .5rem;
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+.Description p{
+    color: var(--dark-gray);
+    font-size: .75rem;
+    font-weight: 600;
+}

@@ -1,4 +1,12 @@
 :root{
-    --gray: rgb(79, 79 ,79);
-    --light-gray: rgb(240, 240, 240);
+    --darker-gray: rgb(30, 30, 30);
+    --dark-gray: rgb(70, 70, 70);
+    --gray: rgb(150, 150, 150);
+    --light-gray: rgb(230, 230, 230);
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
