@@ -3,15 +3,13 @@ p {
 }
 
 .Select {
-    border: 1px solid var(--lighter-gray);
-    padding: .75rem 1rem .75rem 1rem;
-}
-
-.r1 {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    border: 1px solid var(--lighter-gray);
+    position: relative;
+}
+.Link {
+    padding: .5rem .75rem .5rem .75rem;
 }
 
 .Code {
@@ -22,29 +20,8 @@ p {
     font-weight: 500;
     margin-top: -.2rem;
 }
-.Tags {
-    display: flex;
-    flex-direction: row;
-}
-.Tags .Tag {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 
-    background-color: var(--lightest-gray);
-    height: 1.5rem;
-    margin-left: .3rem;
-    border-radius: 1rem;
-    border: 1px solid var(--lighter-gray);
-}
-.Tags .Tag p {
-    color: var(--dark-gray);
-    font-size: .75rem;
-    margin: 0 .65rem .1rem .65rem;
-    font-weight: 800;
-}
-
-.r2 {
+.link_title {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -68,11 +45,42 @@ p {
     font-size: .75rem;
     font-weight: 600;
 }
+
+.Tags {
+    display: flex;
+    flex-direction: row;
+    
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+}
+.Tags .Tag {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: var(--lightest-gray);
+    height: 1.5rem;
+    margin-left: .3rem;
+    border-radius: 1rem;
+    border: 1px solid var(--lighter-gray);
+}
+.Tags .Tag p {
+    color: var(--dark-gray);
+    font-size: .75rem;
+    margin: 0 .65rem .1rem .65rem;
+    font-weight: 800;
+}
+
 .Src a {
     color: var(--gray);
     font-weight: 400;
     font-size: .75rem;
     text-decoration: none;
+
+    position: absolute;
+    right: .75rem;
+    bottom: .5rem;
 }
 .Src a:hover{
     font-weight: 600;
