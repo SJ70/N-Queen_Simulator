@@ -53,12 +53,16 @@ const Description = ({desc}: {desc: string}) => {
     )
 }
 
-const Tags = ({tags}: {tags: number[]}) => {
-    return (
+const Tags = ({tags}: {tags: Set<number>}) => {
+    let arr = [];
+    for(let tag of tags){
+        arr.push(
+            <Tag tag={tag} key={tag}/>
+        );
+    }
+    return(
         <div className="Tags">
-            {tags.map((tag) => (
-                <Tag tag={tag} key={tag}/>
-            ))}
+            {arr}
         </div>
     )
 }
