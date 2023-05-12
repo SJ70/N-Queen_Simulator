@@ -3,7 +3,7 @@ p {
 }
 
 .Select {
-    border: 1px solid var(--light-gray);
+    border: 1px solid var(--lighter-gray);
     padding: .75rem 1rem .75rem 1rem;
 }
 

@@ -1,8 +1,12 @@
 :root{
+    --black: rgb(0, 0, 0);
     --darker-gray: rgb(30, 30, 30);
     --dark-gray: rgb(70, 70, 70);
     --gray: rgb(150, 150, 150);
-    --light-gray: rgb(230, 230, 230);
+    --light-gray: rgb(190, 190, 190);
+    --lighter-gray: rgb(230, 230, 230);
+    --lightest-gray: rgb(245, 245, 245);
+    --white: rgb(255, 255, 255);
 }
 
 .App {

@@ -1,5 +1,5 @@
 .Header {
-  border-bottom: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--lighter-gray);
   display: flex;
   flex-direction: column;
   align-items: center;
