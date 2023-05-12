@@ -1,12 +1,12 @@
 class Problem{
     private code: number;
-    private level: number;
+    private level: string;
     private title: string;
     private desc: string;
     private tag: string[];
     private simulator: JSX.Element;
 
-    constructor(code:number, level:number, title:string, desc:string, tag:string[], simulator:JSX.Element){
+    constructor(code:number, level:string, title:string, desc:string, tag:string[], simulator:JSX.Element){
         this.code = code;
         this.level = level;
         this.title = title;
@@ -18,7 +18,7 @@ class Problem{
     public getCode(): number{
         return this.code;
     }
-    public getLevel(): number{
+    public getLevel(): string{
         return this.level;
     }
     public getTitle(): string{

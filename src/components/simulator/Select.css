@@ -16,13 +16,13 @@ p {
     margin-top: -.2rem;
 }
 
-.Title {
+.Lv_Title {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: .2rem 0 .2rem 0;
 }
-.Title img {
+.Level img {
     width: 2.1rem;
     height: 2.1rem;
     margin-left: -.21rem;

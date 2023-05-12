@@ -7,7 +7,10 @@ const Select = ({prob}: {prob: Problem}) => {
     return (
         <div className="Select">
             <Code code={prob.getCode()}/>
-            <Title title={prob.getTitle()}/>
+            <div className="Lv_Title">
+                <Level level={prob.getLevel()}/>
+                <Title title={prob.getTitle()}/>
+            </div>
             <Description desc={prob.getDesc()}/>
         </div>
     );
@@ -21,10 +24,17 @@ const Code = ({code}: {code: number}) => {
     )
 }
 
+const Level = ({level}: {level: string}) => {
+    return (
+        <div className="Level">
+            <img src={ require("../../img/level/"+level+".png") }/>
+        </div>
+    )
+}
+
 const Title = ({title}: {title: string}) => {
     return (
         <div className="Title">
-            <img src={ require("../../img/b1.png") }/>
             <p>{title}</p>
         </div>
     )
