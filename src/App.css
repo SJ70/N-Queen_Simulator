@@ -14,6 +14,13 @@ a {
 p{
     margin: 0;
 }
+button{
+    border: 1px solid var(--lighter-gray);
+    background-color: transparent;
+}
+button:hover{
+    background-color: var(--lightest-gray);
+}
 
 .App {
     display: flex;
