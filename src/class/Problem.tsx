@@ -37,8 +37,18 @@ class Problem{
         return "https://www.acmicpc.net/problem/"+this.code;
     }
 
-    public hasTag(str:number): boolean{
-        return this.tag.includes(str);
+    public hasTag(tag:number): boolean{
+        if(this.tag[0]>tag && this.tag[this.tag.length-1]<tag) return false;
+        // 정렬되어 있으므로 이분탐색
+        return this.searchTag(tag, 0, this.tag.length-1);
+    }
+    private searchTag(target:number, left:number, right:number): boolean{
+        if(this.tag[left]==target || this.tag[right]==target) return true;
+        if(left==right) return false;
+        let mid:number = Math.floor((left+right)/2);
+        if(this.tag[mid]==target) return true;
+        else if(this.tag[mid]>target) return this.searchTag(target, 0, mid);
+        else return this.searchTag(target, mid+1, right);
     }
 
 }
