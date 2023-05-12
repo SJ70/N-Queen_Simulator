@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Select.css";
 import Problem from '../class/Problem';
+import TagEnum from "../class/Tag";
 
 const Select = ({prob}: {prob: Problem}) => {
 
@@ -8,6 +9,7 @@ const Select = ({prob}: {prob: Problem}) => {
         <div className="Select">
             <div className="r1">
                 <Code code={prob.getCode()}/>
+                <Tags tags={prob.getTag()}/>
             </div>
             <div className="r2">
                 <Level level={prob.getLevel()}/>
@@ -25,6 +27,22 @@ const Code = ({code}: {code: number}) => {
     return (
         <div className="Code">
             <p>{code}</p>
+        </div>
+    )
+}
+const Tags = ({tags}: {tags: number[]}) => {
+    return (
+        <div>
+            {tags.map((tag) => (
+                <Tag tag={tag} key={tag}/>
+            ))}
+        </div>
+    )
+}
+const Tag = ({tag}: {tag: number}) => {
+    return (
+        <div className="Tag">
+            {TagEnum[tag]}
         </div>
     )
 }
