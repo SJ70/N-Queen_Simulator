@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Menu from './pages/Menu';
 import Problem from './class/Problem';
 import Problems from './class/Problems';
+import Simulator from './pages/Simulator';
 
 const App = () => {
   const P: Problems = new Problems();
@@ -15,6 +16,7 @@ const App = () => {
         <Header/>
         <Routes>
           <Route path="/" element={<Menu Probs={P}/>}></Route>
+          <Route path="/:id" element={<Simulator Probs={P}/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

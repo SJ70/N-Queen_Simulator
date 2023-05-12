@@ -2,24 +2,26 @@ import React from 'react';
 import "./Select.css";
 import Problem from '../class/Problem';
 import TagEnum from "../class/Tag";
+import { Link } from 'react-router-dom';
 
 const Select = ({prob}: {prob: Problem}) => {
-
     return (
-        <div className="Select">
-            <div className="r1">
-                <Code code={prob.getCode()}/>
-                <Tags tags={prob.getTag()}/>
+            <div className="Select">
+                <div className="r1">
+                    <Code code={prob.getCode()}/>
+                    <Tags tags={prob.getTag()}/>
+                </div>
+                <div className="r2">
+                    <Level level={prob.getLevel()}/>
+                    <Link to={`/${prob.getCode()}`}>
+                        <Title title={prob.getTitle()}/>
+                    </Link>
+                </div>
+                <div className="r1">
+                    <Description desc={prob.getDesc()}/>
+                    <Src src={prob.getSrc()}/>
+                </div>
             </div>
-            <div className="r2">
-                <Level level={prob.getLevel()}/>
-                <Title title={prob.getTitle()}/>
-            </div>
-            <div className="r1">
-                <Description desc={prob.getDesc()}/>
-                <Src src={prob.getSrc()}/>
-            </div>
-        </div>
     );
 }
 
