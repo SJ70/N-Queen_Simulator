@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Select.css";
-import Problem from '../../class/Problem';
+import Problem from '../class/Problem';
 
 const Select = ({prob}: {prob: Problem}) => {
 
@@ -27,7 +27,7 @@ const Code = ({code}: {code: number}) => {
 const Level = ({level}: {level: string}) => {
     return (
         <div className="Level">
-            <img src={ require("../../img/level/"+level+".png") }/>
+            <img src={ require("../img/level/"+level+".png") }/>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Menu.css';
 import '../components/Restrict.css';
-import Select from '../components/simulator/Select';
+import Select from '../components/Select';
 import Problem from '../class/Problem';
 import Problems from '../class/Problems';
 

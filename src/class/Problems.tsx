@@ -1,5 +1,5 @@
 import Problem from "./Problem";
-import N_Queen from "../components/simulator/N_Queen/N_Queen";
+import N_Queen from "../simulator/N_Queen/N_Queen";
 
 class Problems{
     private Arr: Problem[] = [];
