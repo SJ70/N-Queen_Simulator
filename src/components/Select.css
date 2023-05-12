@@ -7,13 +7,20 @@
 .Link {
     padding: .5rem .75rem .5rem .75rem;
 }
+.Link:hover {
+    background-color: var(--lightest-gray);
+}
+.Link:hover .Title p{
+    font-weight: 400;
+}
 
 .Code {
     color: var(--gray);
     font-size: .9rem;
+    height: 1.5rem;
 }
 .Code p {
-    font-weight: 500;
+    font-weight: 400;
     margin-top: -.2rem;
 }
 
@@ -33,13 +40,20 @@
     color: var(--darker-gray);
     margin: -.2rem 0 .5rem .4rem;
     font-size: 1.7rem;
-    font-weight: 500;
+    font-weight: 200;
 }
 
 .Description p{
     color: var(--dark-gray);
     font-size: .75rem;
-    font-weight: 600;
+    font-weight: 400;
+    width: calc(100% - 3.75rem);
+}
+@media (max-width: 481px) {
+    .Description p{
+        width: 100%;
+        padding-bottom: 1.5rem;
+    }
 }
 
 .Tags {
