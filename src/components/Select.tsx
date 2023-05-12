@@ -6,12 +6,17 @@ const Select = ({prob}: {prob: Problem}) => {
 
     return (
         <div className="Select">
-            <Code code={prob.getCode()}/>
-            <div className="Lv_Title">
+            <div className="r1">
+                <Code code={prob.getCode()}/>
+            </div>
+            <div className="r2">
                 <Level level={prob.getLevel()}/>
                 <Title title={prob.getTitle()}/>
             </div>
-            <Description desc={prob.getDesc()}/>
+            <div className="r1">
+                <Description desc={prob.getDesc()}/>
+                <Src src={prob.getSrc()}/>
+            </div>
         </div>
     );
 }
@@ -44,6 +49,16 @@ const Description = ({desc}: {desc: string}) => {
     return (
         <div className="Description">
             <p>{desc}</p>
+        </div>
+    )
+}
+
+const Src = ({src}: {src: string}) => {
+    return (
+        <div className="Src">
+            <a href={src} target="_blank">
+                문제 보기
+            </a>
         </div>
     )
 }

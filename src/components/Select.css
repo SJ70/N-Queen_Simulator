@@ -7,6 +7,13 @@ p {
     padding: .75rem 1rem .75rem 1rem;
 }
 
+.r1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .Code {
     color: var(--gray);
     font-size: .9rem;
@@ -16,7 +23,7 @@ p {
     margin-top: -.2rem;
 }
 
-.Lv_Title {
+.r2 {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,5 +45,14 @@ p {
 .Description p{
     color: var(--dark-gray);
     font-size: .75rem;
+    font-weight: 600;
+}
+.Src a {
+    color: var(--gray);
+    font-weight: 400;
+    font-size: .75rem;
+    text-decoration: none;
+}
+.Src a:hover{
     font-weight: 600;
 }
