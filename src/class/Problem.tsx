@@ -3,15 +3,15 @@ class Problem{
     private level: string;
     private title: string;
     private desc: string;
-    private tag: string[];
+    private tag: number[];
     private simulator: JSX.Element;
 
-    constructor(code:number, level:string, title:string, desc:string, tag:string[], simulator:JSX.Element){
+    constructor(code:number, level:string, title:string, desc:string, tag:number[], simulator:JSX.Element){
         this.code = code;
         this.level = level;
         this.title = title;
         this.desc = desc;
-        this.tag = tag;
+        this.tag = tag.sort();
         this.simulator = simulator;
     }
 
@@ -27,7 +27,7 @@ class Problem{
     public getDesc(): string {
         return this.desc;
     }
-    public getTag(): string[]{
+    public getTag(): number[]{
         return this.tag;
     }
     public getComp(): JSX.Element{
@@ -37,7 +37,7 @@ class Problem{
         return "https://www.acmicpc.net/problem/"+this.code;
     }
 
-    public hasTag(str:string): boolean{
+    public hasTag(str:number): boolean{
         return this.tag.includes(str);
     }
 
