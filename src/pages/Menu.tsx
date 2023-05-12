@@ -12,8 +12,8 @@ const Menu = () => {
     <div className="Restrict">
         <div className="Menu">
             {/* <sort></sort> */}
-            {Probs.getProblems().map(prob => (
-              <Select prob={prob}/>
+            {Probs.getProblems().map((prob,index) => (
+              <Select prob={prob} key={index}/>
             ))}
         </div>
     </div>
