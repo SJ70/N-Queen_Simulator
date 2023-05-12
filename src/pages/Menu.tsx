@@ -5,8 +5,7 @@ import Select from '../components/Select';
 import Problem from '../class/Problem';
 import Problems from '../class/Problems';
 
-const Menu = () => {
-  const Probs: Problems = new Problems();
+const Menu = ({Probs}: {Probs: Problems}) => {
 
   return (
     <div className="Restrict">
