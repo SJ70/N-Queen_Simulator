@@ -32,7 +32,7 @@ const Code = ({code}: {code: number}) => {
 }
 const Tags = ({tags}: {tags: number[]}) => {
     return (
-        <div>
+        <div className="Tags">
             {tags.map((tag) => (
                 <Tag tag={tag} key={tag}/>
             ))}
@@ -42,7 +42,9 @@ const Tags = ({tags}: {tags: number[]}) => {
 const Tag = ({tag}: {tag: number}) => {
     return (
         <div className="Tag">
-            {TagEnum[tag]}
+            <p>
+                {TagEnum[tag]}
+            </p>
         </div>
     )
 }
