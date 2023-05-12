@@ -27,7 +27,7 @@ p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: .3rem 0 .1rem 0;
+    margin: .5rem 0 .1rem 0;
 }
 .Level img {
     width: 2.1rem;
