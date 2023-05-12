@@ -20,7 +20,7 @@ p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: .2rem 0 .2rem 0;
+    margin: .3rem 0 .1rem 0;
 }
 .Level img {
     width: 2.1rem;
@@ -30,7 +30,7 @@ p {
 }
 .Title p {
     color: var(--darker-gray);
-    margin: 0 0 .3rem .5rem;
+    margin: -.2rem 0 .5rem .4rem;
     font-size: 1.7rem;
     font-weight: 500;
 }
