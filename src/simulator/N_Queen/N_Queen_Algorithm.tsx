@@ -1,4 +1,4 @@
-class N_Queen_Logic{
+class N_Queen_Algorithm {
     
     private N;
     private checkC: boolean[];
@@ -37,4 +37,4 @@ class N_Queen_Logic{
     }
 }
 
-export default N_Queen_Logic;
+export default N_Queen_Algorithm;
