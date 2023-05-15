@@ -1,4 +1,4 @@
-class N_Queen{
+class N_Queen_Logic{
     
     private checkC: boolean[][];
     private checkDir1: boolean[][];
@@ -16,4 +16,4 @@ class N_Queen{
     }
 }
 
-export default N_Queen;
+export default N_Queen_Logic;
