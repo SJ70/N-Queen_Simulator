@@ -33,15 +33,16 @@ const N_Queen = () => {
 
 function getNValue(str: string): number{
   let n = Number(str);
-  return getValue(n,n_min,n_max);
+  return getNumberValue(n,n_min,n_max);
 }
 
 function getFpsValue(str: string): number{
   let fps = Number(str);
-  return getValue(fps,fps_min,fps_max);
+  return getNumberValue(fps,fps_min,fps_max);
 }
 
-function getValue(n: number, min: number, max: number){
+function getNumberValue(n: number, min: number, max: number){
+  if(Number.isNaN(n)) return 1;
   return (n>max)?max : (n<min)?min : n;
 }
 
