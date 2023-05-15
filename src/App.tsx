@@ -16,7 +16,7 @@ const App = () => {
         <Header/>
         <Routes>
           <Route path="/" element={<Menu Probs={P}/>}></Route>
-          <Route path="/:id" element={<Simulator Probs={P}/>}></Route>
+          <Route path="/:id/*" element={<Simulator Probs={P}/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
