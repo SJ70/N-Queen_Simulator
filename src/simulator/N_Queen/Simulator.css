@@ -1,10 +1,11 @@
 :root {
     --N: 1;
+    --table_size: calc(min(65vw, 65vh));
 }
 
 table {
-    width: calc(min(70vw, 70vh));
-    height: calc(min(70vw, 70vh));
+    width: var(--table_size);
+    height: var(--table_size);
     background-color: var(--light-gray);
     border-collapse: collapse;
     border: 3px solid rgb(30,30,30);
@@ -25,12 +26,12 @@ td {
 }
 
 td div {
-    width: calc( min(70vw, 70vh) / var(--N) );
-    height: calc( min(70vw, 70vh) / var(--N) );
+    width: calc( var(--table_size) / var(--N) );
+    height: calc( var(--table_size) / var(--N) );
 }
 td img {
-    width: calc( min(70vw, 70vh) / var(--N) * 0.9 );
-    height: calc( min(70vw, 70vh) / var(--N) * 0.9 );
+    width: calc( var(--table_size) / var(--N) * 0.9 );
+    height: calc( var(--table_size) / var(--N) * 0.9 );
     object-fit: scale-down;
     margin: 0;
     padding: 0;
