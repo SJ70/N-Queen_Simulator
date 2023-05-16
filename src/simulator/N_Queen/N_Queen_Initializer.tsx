@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './N_Queen_Initializer.css';
 
 const n_min: number = 1;
-const n_max: number = 15;
+const n_max: number = 14;
 const fps_min: number = 1;
 const fps_max: number = 144;
 
