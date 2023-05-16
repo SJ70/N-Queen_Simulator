@@ -1,6 +1,6 @@
 import { Encrypt } from './Crypto';
 
-class N_Queen_Algorithm {
+class Algorithm {
     
     private N;
     private checkC: boolean[];
@@ -50,4 +50,4 @@ class N_Queen_Algorithm {
     }
 }
 
-export default N_Queen_Algorithm;
+export default Algorithm;

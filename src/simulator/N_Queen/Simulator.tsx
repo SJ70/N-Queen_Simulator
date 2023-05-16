@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import Algorithm from './N_Queen_Algorithm';
-import './N_Queen_Simulator.css';
+import Algorithm from './Algorithm';
+import './Simulator.css';
 import { Decrypt } from './Crypto';
 
 let useStateArr: React.Dispatch<React.SetStateAction<number>>[][];

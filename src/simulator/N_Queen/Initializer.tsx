@@ -1,13 +1,13 @@
 import {useState} from 'react';
 import { Link } from 'react-router-dom';
-import './N_Queen_Initializer.css';
+import './Initializer.css';
 
 const n_min: number = 1;
 const n_max: number = 14;
 const fps_min: number = 1;
 const fps_max: number = 144;
 
-const N_Queen_Initializer = () => {
+const Initializer = () => {
   const [n, setN] = useState<number>(8);
   const [fps, setFps] = useState<number>(1);
 
@@ -49,4 +49,4 @@ function getNumberValue(n: number, min: number, max: number){
   return (n>max)?max : (n<min)?min : n;
 }
 
-export default N_Queen_Initializer;
+export default Initializer;

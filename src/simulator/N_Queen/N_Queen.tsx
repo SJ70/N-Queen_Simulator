@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import Initializer from './N_Queen_Initializer';
-import Simulator from './N_Queen_Simulator';
+import Initializer from './Initializer';
+import Simulator from './Simulator';
 import './N_Queen.css';
 
 const N_Queen = () => {
