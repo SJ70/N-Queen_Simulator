@@ -3,5 +3,5 @@ export const Encrypt = (r: number, c: number): number => {
 }
 
 export const Decrypt = (code: number): number[] => {
-    return [code/100, code%100];
+    return [Math.floor(code/100), code%100];
 }
