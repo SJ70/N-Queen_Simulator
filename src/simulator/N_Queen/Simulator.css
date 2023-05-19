@@ -3,12 +3,21 @@
     --table_size: calc(min(65vw, 65vh));
 }
 
+.Simulator{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 table {
     width: var(--table_size);
     height: var(--table_size);
     background-color: var(--light-gray);
     border-collapse: collapse;
     border: 3px solid rgb(30,30,30);
+    user-select : none;
 }
 
 td {
@@ -35,4 +44,13 @@ td img {
     object-fit: scale-down;
     margin: 0;
     padding: 0;
+}
+
+.arrow{
+    color: rgb(150, 150, 150);
+    font-size: calc( var(--table_size) / 5 );
+}
+
+.arrow:hover{
+    color: rgb(30,30,30);
 }
