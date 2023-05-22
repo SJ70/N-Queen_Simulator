@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Algorithm from './Algorithm';
 import './Simulator.css';
 import { Decrypt } from './Crypto';
-import { VscChevronLeft, VscChevronRight } from "react-icons/vsc"
+import { VscChevronLeft, VscChevronRight, VscDebugPause, VscDebugStart } from "react-icons/vsc"
 
 let _useState: React.Dispatch<React.SetStateAction<number>>[][];
 let _getValue: Function[][];
@@ -34,7 +34,10 @@ const N_Queen_Simulator = () => {
     const changeIndex = (value:number): void => {
         let i: number = index + value;
         if(value>0){
-            if(i>History.length) return;
+            if(i>History.length){
+                setAuto(false);
+                return;
+            } 
             let pos: number[] = Decrypt(History[index]);
             setQueen(pos[0], pos[1]);
         }
@@ -51,11 +54,28 @@ const N_Queen_Simulator = () => {
         changeTableValue(r,c,value);
     }
 
+    const [auto, setAuto] = useState(false);
+
+    useEffect(() => {
+        const play = setTimeout(()=>{
+            if(auto){
+                changeIndex(1); 
+            }
+        }, 1000/FPS);
+    });
+
+
     return (
         <div className='Simulator'>
-            <VscChevronLeft className='arrow' onClick={()=>{changeIndex(-1)}}/>
+            <VscChevronLeft className='arrow' onClick={()=>{setAuto(false); changeIndex(-1);}}/>
             <Table N={N}/>
-            <VscChevronRight className='arrow' onClick={()=>{changeIndex(1)}}/>
+            <VscChevronRight className='arrow' onClick={()=>{setAuto(false); changeIndex(1);}}/>
+            {  
+                auto
+                ? (<VscDebugPause className='start_pause' onClick={()=>{setAuto(false);}}/>)
+                : (<VscDebugStart className='start_pause' onClick={()=>{setAuto(true); if(index==History.length) setIndex(0);}}/>)
+            }
+            {index}/{History.length}
         </div>
     )
 }
