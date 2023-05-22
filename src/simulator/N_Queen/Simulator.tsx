@@ -104,7 +104,10 @@ const View = () =>{
     }
 
     const startAuto = ():void => {
-        if(index==HISTORY.length) setIndex(0);
+        if(index==HISTORY.length){
+            INDEX = 0;
+            setIndex(INDEX);
+        } 
         AUTO = setInterval(()=>AUTO_FUNC(), 1000/FPS);
         AUTO_TOGGLE = true;
         setAutoToggle(true);
