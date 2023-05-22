@@ -8,7 +8,7 @@ const N_Queen = () => {
         <div className="N_Queen">
             <Routes>
                 <Route path="/" element={<Initializer/>}></Route>
-                <Route path="/n/:n/fps/:fps" element={<Simulator/>}></Route>
+                <Route path="/n/:n" element={<Simulator/>}></Route>
             </Routes>
         </div>
     )

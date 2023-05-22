@@ -5,14 +5,16 @@ import './Simulator.css';
 import { Decrypt } from './Crypto';
 import { VscChevronLeft, VscChevronRight, VscDebugPause, VscDebugStart } from "react-icons/vsc"
 
+const fps_min: number = 1;
+const fps_max: number = 144;
+
 let _useState: React.Dispatch<React.SetStateAction<number>>[][];
 let _getValue: Function[][];
 
 const N_Queen_Simulator = () => {
 
-    const { n, fps } = useParams();
+    const { n } = useParams();
     const N: number = Number(n);
-    const FPS: number = Number(fps);
 
     const Algo: Algorithm = new Algorithm(N);
     const History: number[] = Algo.getHistory();
@@ -57,13 +59,24 @@ const N_Queen_Simulator = () => {
     const [auto, setAuto] = useState(false);
 
     useEffect(() => {
-        const play = setTimeout(()=>{
+        setTimeout(()=>{
             if(auto){
                 changeIndex(1); 
             }
-        }, 1000/FPS);
+        }, 1000/fps);
     });
 
+    const [fps, setFps] = useState<number>(1);
+    function getFpsValue(str: string): number{
+        setAuto(false);
+        let fps = Number(str);
+        return getNumberValue(fps,fps_min,fps_max);
+    }
+
+    function getNumberValue(n: number, min: number, max: number){
+        if(Number.isNaN(n)) return 1;
+        return (n>max)?max : (n<min)?min : n;
+    }
 
     return (
         <div className='Simulator'>
@@ -76,6 +89,13 @@ const N_Queen_Simulator = () => {
                 : (<VscDebugStart className='start_pause' onClick={()=>{setAuto(true); if(index==History.length) setIndex(0);}}/>)
             }
             {index}/{History.length}
+            <div className="FPS">
+                <div className="row">
+                <p>초당 프레임 수 : </p>
+                <input type="text" value={fps} onFocus={e => e.target.select()} onChange={e => setFps(getFpsValue(e.target.value))}></input>
+                </div>
+                <input type="range" value={fps} min={fps_min} max={fps_max} step={1} onChange={e => setFps(getFpsValue(e.target.value))}></input>
+            </div>
         </div>
     )
 }
