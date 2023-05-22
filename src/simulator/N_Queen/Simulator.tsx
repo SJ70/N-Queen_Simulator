@@ -20,20 +20,45 @@ let AUTO: NodeJS.Timer;
 let AUTO_FUNC: Function; 
 let AUTO_TOGGLE: boolean;
 
-const changeIndex = (value:number): void => {
-    let nextIndex = INDEX + value;
+const changeIndex = (dir:number): void => {
+    let nextIndex = INDEX + dir;
     if( nextIndex > HISTORY.length || nextIndex < 0 ) return;
 
-    let pos: number[] = Decrypt(HISTORY[ (value>0) ? INDEX : INDEX-1 ]);
-    changeValue(pos[0], pos[1]);
+    let pos: number[] = Decrypt(HISTORY[ (dir>0) ? INDEX : INDEX-1 ]);
+    putQueen(pos[0], pos[1]);
 
     INDEX = nextIndex;
 }
 
-const changeValue = (r:number, c:number): void => {
+const QUEEN = 100000;
+const CANNOTPUT = 1;
+const putQueen = (r:number, c:number): void => {
+    console.log(r,c);
     let value = GETVALUE[r][c]();
-    value += value>=100 ? -100 : 100;
-    USESTATE[r][c](value);
+    let put: number = (value<QUEEN) ? 1 : -1;
+    fillRed(r,c,put);
+    USESTATE[r][c]( value + QUEEN*put );
+}
+const fillRed = (r:number, c:number, put:number): void => {
+    //가로세로
+    for(let i=0; i<N; i++){
+        USESTATE[r][i]( GETVALUE[r][i]() + CANNOTPUT*put );
+        USESTATE[i][c]( GETVALUE[i][c]() + CANNOTPUT*put );
+    }
+    //우상향대각
+    for(let i=1; r+i<N && c-i>=0; i++){
+        USESTATE[r+i][c-i]( GETVALUE[r+i][c-i]() + CANNOTPUT*put );
+    }
+    for(let i=-1; r+i>=0 && c-i<N; i--){
+        USESTATE[r+i][c-i]( GETVALUE[r+i][c-i]() + CANNOTPUT*put );
+    }
+    //우하향대각
+    for(let i=1; r+i<N && c+i<N; i++){
+        USESTATE[r+i][c+i]( GETVALUE[r+i][c+i]() + CANNOTPUT*put );
+    }
+    for(let i=-1; r+i>=0 && c+i>=0; i--){
+        USESTATE[r+i][c+i]( GETVALUE[r+i][c+i]() + CANNOTPUT*put );
+    }
 }
 
 const Simulator = () => {
@@ -69,10 +94,11 @@ const View = () =>{
     AUTO_FUNC = ():void => {
         if(!AUTO_TOGGLE || INDEX+1 > HISTORY.length){
             stopAuto();
+            clearInterval(AUTO);
             return;
         } 
         let pos: number[] = Decrypt(HISTORY[INDEX]);
-        changeValue(pos[0], pos[1]);
+        putQueen(pos[0], pos[1]);
         INDEX++;
         setIndex(INDEX);
     }
@@ -84,7 +110,6 @@ const View = () =>{
         setAutoToggle(true);
     }
     const stopAuto = ():void => {
-        clearInterval(AUTO);
         AUTO_TOGGLE = false;
         setAutoToggle(false);
     }
@@ -167,10 +192,10 @@ const Column = ({row, column}: {row:number, column:number}) => {
     GETVALUE[row][column] = getValue;
 
     const style: string = ((row+column)%2==0) ? "black" : "white";
-    const element: JSX.Element = (value>=100) ? (<img src={require("../../img/LightQueen.webp")}></img>) : (<div></div>);
+    const element: JSX.Element = (value>=QUEEN) ? (<img src={require("../../img/LightQueen.webp")}></img>) : (value>=CANNOTPUT) ? (<div className="red"/>) : (<div/>);
     return (
         <td className={style}>
-            {/* {value} */}
+            {value}
             {element}
         </td>
     )
