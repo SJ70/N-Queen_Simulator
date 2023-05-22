@@ -122,10 +122,7 @@ const View = () =>{
     const setFpsValue = (str: string): void => {
         FPS = getFpsValue(str);
         setFps(FPS);
-        if(AUTO_TOGGLE){
-            stopAuto();
-            startAuto();
-        }
+        stopAuto();
     }
     const getFpsValue = (str: string): number => {
         let fps = Number(str);
