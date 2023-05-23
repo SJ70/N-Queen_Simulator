@@ -39,7 +39,6 @@ const putQueen = (r:number, c:number, dir:number): void => {
     let value = GETVALUE[r][c]();
     let put: number = (value<QUEEN) ? 1 : -1;
     if(r==N-1){
-        console.log(put,dir);
         if(put==1 && dir>0) RESULT++;
         else if(put==-1 && dir<0) RESULT--;
     }
@@ -66,6 +65,10 @@ const fillRed = (r:number, c:number, put:number): void => {
     for(let i=-1; r+i>=0 && c+i>=0; i--){
         USESTATE[r+i][c+i]( GETVALUE[r+i][c+i]() + CANNOTPUT*put );
     }
+}
+
+const isLastIndex = (i: number):boolean => {
+    return i==HISTORY.length;
 }
 
 const Simulator = () => {
@@ -111,13 +114,14 @@ const View = () =>{
         setIndex(INDEX);
         setResult(RESULT)
     }
+    const InitIndex = ():void => {
+        INDEX = 0;
+        RESULT = 0;
+        setIndex(INDEX);
+    }
 
     START_AUTO = ():void => {
-        if(index==HISTORY.length){
-            INDEX = 0;
-            RESULT = 0;
-            setIndex(INDEX);
-        } 
+        if(isLastIndex(index)) InitIndex();
         AUTO = setInterval(()=>AUTO_FUNC(), 1000/FPS);
         AUTO_TOGGLE = true;
         setAutoToggle(true);
@@ -144,6 +148,7 @@ const View = () =>{
                 }}/>
                 <Table N={N}/>
                 <VscChevronRight className='arrow' onClick={()=>{
+                    if(isLastIndex(index)) InitIndex();
                     STOP_AUTO();
                     changeIndex(1);
                     setIndex(INDEX);
