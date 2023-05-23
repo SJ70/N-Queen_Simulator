@@ -17,7 +17,7 @@ const Initializer = () => {
         </div>
         <input type="range" value={n} min={n_min} max={n_max} step={1} onChange={e => setN(Number(e.target.value))}></input>
       </div>
-      <Link to={"./n/"+n}>
+      <Link className="button" to={"./n/"+n}>
         <button>시작하기</button>
       </Link>
     </div>
