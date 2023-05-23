@@ -18,8 +18,9 @@ const Initializer = () => {
         <input type="range" value={n} min={n_min} max={n_max} step={1} onChange={e => setN(Number(e.target.value))}></input>
       </div>
       <Link className="button" to={"./n/"+n}>
-        <button>시작하기</button>
+        <button className="button">시작하기</button>
       </Link>
+      <p className="desc">성능에 따라 시간이 소요될 수 있습니다.</p>
     </div>
   );
 }
