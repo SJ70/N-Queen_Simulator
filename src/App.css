@@ -7,6 +7,8 @@
     --lighter-gray: rgb(230, 230, 230);
     --lightest-gray: rgb(245, 245, 245);
     --white: rgb(255, 255, 255);
+
+    --HeaderHeight: 5rem;
 }
 a {
     text-decoration: none;
