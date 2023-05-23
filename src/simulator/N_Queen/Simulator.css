@@ -143,7 +143,8 @@ td img {
     margin: 0;
 }
 .FPSsetter .desc{
-    font-size: 0.01rem;
+    font-size: 0.5rem;
     color: var(--light-gray);
     text-align: end;
+    margin: 0;
 }
