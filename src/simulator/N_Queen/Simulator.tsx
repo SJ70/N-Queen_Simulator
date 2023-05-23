@@ -15,6 +15,7 @@ let HISTORY: number[];
 let USESTATE: React.Dispatch<React.SetStateAction<number>>[][];
 let GETVALUE: Function[][];
 let INDEX: number;
+let RESULT: number;
 
 let AUTO: NodeJS.Timer;
 let AUTO_FUNC: Function; 
@@ -27,16 +28,21 @@ const changeIndex = (dir:number): void => {
     if( nextIndex > HISTORY.length || nextIndex < 0 ) return;
 
     let pos: number[] = Decrypt(HISTORY[ (dir>0) ? INDEX : INDEX-1 ]);
-    putQueen(pos[0], pos[1]);
+    putQueen(pos[0], pos[1], dir);
 
     INDEX = nextIndex;
 }
 
 const QUEEN = 100000;
 const CANNOTPUT = 1;
-const putQueen = (r:number, c:number): void => {
+const putQueen = (r:number, c:number, dir:number): void => {
     let value = GETVALUE[r][c]();
     let put: number = (value<QUEEN) ? 1 : -1;
+    if(r==N-1){
+        console.log(put,dir);
+        if(put==1 && dir>0) RESULT++;
+        else if(put==-1 && dir<0) RESULT--;
+    }
     fillRed(r,c,put);
     USESTATE[r][c]( value + QUEEN*put );
 }
@@ -69,6 +75,7 @@ const Simulator = () => {
     ALGO = new Algorithm(N);
     HISTORY = ALGO.getHistory();
     INDEX = 0;
+    RESULT = 0;
     AUTO_TOGGLE = false;
 
     document.documentElement.style.setProperty('--N',String(N));
@@ -88,8 +95,8 @@ const Simulator = () => {
 } 
 
 const View = () =>{
-    const [index,setIndex] = useState<number>(INDEX);
-
+    const [index, setIndex] = useState<number>(INDEX);
+    const [result, setResult] = useState<number>(RESULT);
     const [autoToggle, setAutoToggle] = useState<boolean>(false);
 
     AUTO_FUNC = ():void => {
@@ -99,14 +106,16 @@ const View = () =>{
             return;
         } 
         let pos: number[] = Decrypt(HISTORY[INDEX]);
-        putQueen(pos[0], pos[1]);
+        putQueen(pos[0], pos[1], 1);
         INDEX++;
         setIndex(INDEX);
+        setResult(RESULT)
     }
 
     START_AUTO = ():void => {
         if(index==HISTORY.length){
             INDEX = 0;
+            RESULT = 0;
             setIndex(INDEX);
         } 
         AUTO = setInterval(()=>AUTO_FUNC(), 1000/FPS);
@@ -127,14 +136,24 @@ const View = () =>{
             </div>
 
             <div className='mid'>
-                <VscChevronLeft className='arrow' onClick={()=>{STOP_AUTO(); changeIndex(-1); setIndex(INDEX);}}/>
+                <VscChevronLeft className='arrow' onClick={()=>{
+                    STOP_AUTO();
+                    changeIndex(-1);
+                    setIndex(INDEX);
+                    setResult(RESULT);
+                }}/>
                 <Table N={N}/>
-                <VscChevronRight className='arrow' onClick={()=>{STOP_AUTO(); changeIndex(1); setIndex(INDEX);}}/>
+                <VscChevronRight className='arrow' onClick={()=>{
+                    STOP_AUTO();
+                    changeIndex(1);
+                    setIndex(INDEX);
+                    setResult(RESULT);
+                }}/>
             </div>
 
 
             <div className='bottom'>
-                <ShowValue name="pages" value={index} maxValue={HISTORY.length}/>       
+                <ShowValue name="result" value={result} maxValue={ALGO.getResult()}/>       
             {  
                 autoToggle
                 ? (<VscDebugPause className='start_pause' onClick={()=>STOP_AUTO()}/>)
