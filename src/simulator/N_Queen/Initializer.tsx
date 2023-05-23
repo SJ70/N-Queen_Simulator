@@ -29,7 +29,6 @@ function getNValue(str: string): number{
   return getNumberValue(n,n_min,n_max);
 }
 
-
 function getNumberValue(n: number, min: number, max: number){
   if(Number.isNaN(n)) return 1;
   return (n>max)?max : (n<min)?min : n;

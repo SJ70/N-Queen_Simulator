@@ -19,6 +19,8 @@ let INDEX: number;
 let AUTO: NodeJS.Timer;
 let AUTO_FUNC: Function; 
 let AUTO_TOGGLE: boolean;
+let START_AUTO: Function;
+let STOP_AUTO: Function;
 
 const changeIndex = (dir:number): void => {
     let nextIndex = INDEX + dir;
@@ -33,7 +35,6 @@ const changeIndex = (dir:number): void => {
 const QUEEN = 100000;
 const CANNOTPUT = 1;
 const putQueen = (r:number, c:number): void => {
-    console.log(r,c);
     let value = GETVALUE[r][c]();
     let put: number = (value<QUEEN) ? 1 : -1;
     fillRed(r,c,put);
@@ -93,7 +94,7 @@ const View = () =>{
 
     AUTO_FUNC = ():void => {
         if(!AUTO_TOGGLE || INDEX+1 > HISTORY.length){
-            stopAuto();
+            STOP_AUTO();
             clearInterval(AUTO);
             return;
         } 
@@ -103,7 +104,7 @@ const View = () =>{
         setIndex(INDEX);
     }
 
-    const startAuto = ():void => {
+    START_AUTO = ():void => {
         if(index==HISTORY.length){
             INDEX = 0;
             setIndex(INDEX);
@@ -112,45 +113,37 @@ const View = () =>{
         AUTO_TOGGLE = true;
         setAutoToggle(true);
     }
-    const stopAuto = ():void => {
+    STOP_AUTO = ():void => {
         AUTO_TOGGLE = false;
         setAutoToggle(false);
-    }
-
-    const [fps, setFps] = useState<number>(FPS);
-
-    const setFpsValue = (str: string): void => {
-        FPS = getFpsValue(str);
-        setFps(FPS);
-        stopAuto();
-    }
-    const getFpsValue = (str: string): number => {
-        let fps = Number(str);
-        return getNumberValue(fps,fps_min,fps_max);
-    }
-    const getNumberValue = (n: number, min: number, max: number) => {
-        if(Number.isNaN(n)) return 1;
-        return (n>max)?max : (n<min)?min : n;
     }
     
     return(
         <div className='view'>
-            <VscChevronLeft className='arrow' onClick={()=>{stopAuto(); changeIndex(-1); setIndex(INDEX);}}/>
-            <Table N={N}/>
-            <VscChevronRight className='arrow' onClick={()=>{stopAuto(); changeIndex(1); setIndex(INDEX);}}/>
+
+            <div className='top'>
+                <span className="n">N = </span>
+                <span className="nValue">{N}</span>
+            </div>
+
+            <div className='mid'>
+                <VscChevronLeft className='arrow' onClick={()=>{STOP_AUTO(); changeIndex(-1); setIndex(INDEX);}}/>
+                <Table N={N}/>
+                <VscChevronRight className='arrow' onClick={()=>{STOP_AUTO(); changeIndex(1); setIndex(INDEX);}}/>
+            </div>
+
+
+            <div className='bottom'>
+                <ShowValue name="pages" value={index} maxValue={HISTORY.length}/>       
             {  
                 autoToggle
-                ? (<VscDebugPause className='start_pause' onClick={()=>stopAuto()}/>)
-                : (<VscDebugStart className='start_pause' onClick={()=>startAuto()}/>)
+                ? (<VscDebugPause className='start_pause' onClick={()=>STOP_AUTO()}/>)
+                : (<VscDebugStart className='start_pause' onClick={()=>START_AUTO()}/>)
             }
-            {index}/{HISTORY.length}
-            <div className="FPS">
-                <div className="row">
-                <p>초당 프레임 수 : </p>
-                <input type="text" value={fps} onFocus={e => e.target.select()} onChange={e => setFpsValue(e.target.value)}></input>
-                </div>
-                <input type="range" value={fps} min={fps_min} max={fps_max} step={1} onChange={e => setFpsValue(e.target.value)}></input>
+                <ShowValue name="pages" value={index} maxValue={HISTORY.length}/>       
             </div>
+
+            <FPSsetter/>
         </div>
     );
 }
@@ -195,9 +188,51 @@ const Column = ({row, column}: {row:number, column:number}) => {
     const element: JSX.Element = (value>=QUEEN) ? (<img src={require("../../img/LightQueen.webp")}></img>) : (value>=CANNOTPUT) ? (<div className="red"/>) : (<div/>);
     return (
         <td className={style}>
-            {value}
+            {/* {value} */}
             {element}
         </td>
+    )
+}
+
+const ShowValue = ({name, value, maxValue}: {name:string, value:number, maxValue:number}) => {
+    return(
+        <div className="showValue">
+            <p className="name">{name}</p>
+            <div className="values">
+                <span className="value">{value}</span>
+                <span className="maxValue">/{maxValue}</span>
+            </div>
+        </div>
+    )
+}
+
+const FPSsetter = () => {
+
+    const [fps, setFps] = useState<number>(FPS);
+
+    const setFpsValue = (str: string): void => {
+        FPS = getFpsValue(str);
+        setFps(FPS);
+        STOP_AUTO();
+    }
+    const getFpsValue = (str: string): number => {
+        let fps = Number(str);
+        return getNumberValue(fps,fps_min,fps_max);
+    }
+    const getNumberValue = (n: number, min: number, max: number) => {
+        if(Number.isNaN(n)) return 1;
+        return (n>max)?max : (n<min)?min : n;
+    }
+
+    return(
+        <div className="FPSsetter">
+            <div className="row">
+                <span className="fps">FPS</span>
+                <input type="text" value={fps} onFocus={e => e.target.select()} onChange={e => setFpsValue(e.target.value)}></input>
+            </div>
+            <input type="range" value={fps} min={fps_min} max={fps_max} step={1} onChange={e => setFpsValue(e.target.value)}></input>
+            <p className="desc">성능에 따라 실제 프레임 수와 다를 수 있습니다.</p>
+        </div>
     )
 }
 

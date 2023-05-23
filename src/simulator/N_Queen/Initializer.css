@@ -32,26 +32,6 @@
     height: 5rem;
 }
 
-.FPS {
-    margin-top: 1.25rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.FPS p{
-    font-size: .9rem;
-    font-weight: 500;
-    color: var(--dark-gray);
-}
-.FPS input[type=text] {
-    font-size: 1.75rem;
-    width: 4rem;
-    height: 1.6rem;
-    margin-right: .5rem;
-}
-
 input[type=text] {
     background-color: transparent;
     text-align: right;
@@ -60,9 +40,6 @@ input[type=text] {
 }
 input[type=range] {
     width: 100%;
-}
-input::placeholder{
-    color: var(--light-gray);
 }
 
 button {

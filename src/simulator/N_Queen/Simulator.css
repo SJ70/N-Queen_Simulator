@@ -1,6 +1,7 @@
 :root {
     --N: 1;
-    --table_size: calc(min(65vw, 65vh));
+    --table_size: calc(min(60vw, 60vh));
+    user-select : none;
 }
 
 .Simulator{
@@ -8,6 +9,24 @@
 }
 
 .view{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top {
+    align-content: center;
+    margin-bottom: .5rem;
+}
+.top .n{
+    font-size: 3.5rem;
+    font-weight: 100;
+}
+.top .nValue{
+    font-size: 4rem;
+}
+
+.mid{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -20,8 +39,7 @@ table {
     height: var(--table_size);
     background-color: var(--light-gray);
     border-collapse: collapse;
-    border: 3px solid rgb(30,30,30);
-    user-select : none;
+    border: 3px solid var(--darker-gray);
 }
 
 td {
@@ -33,11 +51,9 @@ td {
 .black{
     background-color: rgb(80, 80, 80);
 }
-
 .white{
     background-color: rgb(248, 248, 248);
 }
-
 .red{
     background-color: red;
     opacity: 0.5;
@@ -55,18 +71,76 @@ td img {
     padding: 0;
 }
 
-.arrow{
-    color: rgb(150, 150, 150);
-    font-size: calc( var(--table_size) / 5 );
-}
-.arrow:hover{
-    color: rgb(30,30,30);
+.bottom{
+    width: var(--table_size);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: .5rem;
 }
 
-.start_pause{
-    color: rgb(150, 150, 150);
-    font-size: calc( var(--table_size) / 10 );
+.bottom .showValue {
+    align-items: center;
+    width: 10rem;
 }
-.start_pause:hover{
-    color: rgb(30,30,30);
+.bottom .showValue .name{
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--dark-gray);
+}
+.bottom .showValue .values{
+    text-align: center;
+}
+.bottom .showValue .maxValue{
+    font-size: 0.7rem;
+    color: var(--gray);
+}
+.bottom .showValue .value{
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.bottom .start_pause{
+    color: var(--gray);
+    font-size: 4rem;
+}
+.bottom .start_pause:hover{
+    color: var(--darker-gray);
+}
+
+.arrow{
+    color: var(--gray);
+    font-size: 7.5rem;
+}
+.arrow:hover{
+    color: var(--darker-gray);
+}
+
+.FPSsetter{
+    width: var(--table_size);
+}
+.FPSsetter .row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin: 0;
+}
+.FPSsetter .fps{
+    font-size: .9rem;
+    font-weight: 500;
+}
+.FPSsetter input[type=text]{
+    font-size: 1.2rem;
+    width: 4rem;
+}
+.FPSsetter input[type=range]{
+    margin: 0;
+}
+.FPSsetter .desc{
+    font-size: 0.01rem;
+    color: var(--light-gray);
+    text-align: end;
 }
