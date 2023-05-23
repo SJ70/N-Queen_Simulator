@@ -4,6 +4,7 @@ import Algorithm from './Algorithm';
 import './Simulator.css';
 import { Decrypt } from './Crypto';
 import { VscChevronLeft, VscChevronRight, VscDebugPause, VscDebugStart } from "react-icons/vsc"
+import GoBack from '../../components/GoBack';
 
 const fps_min: number = 1;
 const fps_max: number = 1000;
@@ -133,6 +134,7 @@ const View = () =>{
     
     return(
         <div className='view'>
+            <GoBack/>
 
             <div className='top'>
                 <span className="n">{N}</span>
