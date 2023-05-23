@@ -135,8 +135,8 @@ const View = () =>{
         <div className='view'>
 
             <div className='top'>
-                <span className="n">N = </span>
-                <span className="nValue">{N}</span>
+                <span className="n">{N}</span>
+                <span className="queen">-Queen</span>
             </div>
 
             <div className='mid'>

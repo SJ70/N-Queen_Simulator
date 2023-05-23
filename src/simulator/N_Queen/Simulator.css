@@ -15,15 +15,18 @@
 }
 
 .top {
-    align-content: center;
-    margin-bottom: .5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: .2rem;
+    margin-bottom: .7rem;
 }
 .top .n{
-    font-size: 3.5rem;
-    font-weight: 100;
+    font-size: 5rem;
 }
-.top .nValue{
-    font-size: 4rem;
+.top .queen{
+    font-size: 3.75rem;
+    font-weight: 100;
 }
 
 .mid{
