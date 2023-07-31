@@ -2,8 +2,8 @@ import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Initializer.css';
 
-const n_min: number = 1;
-const n_max: number = 14;
+const N_MIN: number = 1;
+const N_MAX: number = 14;
 
 const Initializer = () => {
   const [n, setN] = useState<number>(8);
@@ -15,7 +15,7 @@ const Initializer = () => {
           <p>N = </p>
           <input type="text" value={n} onFocus={e => e.target.select()} onChange={e => setN(getNValue(e.target.value))}></input>
         </div>
-        <input type="range" value={n} min={n_min} max={n_max} step={1} onChange={e => setN(Number(e.target.value))}></input>
+        <input type="range" value={n} min={N_MIN} max={N_MAX} step={1} onChange={e => setN(Number(e.target.value))}></input>
       </div>
       <Link className="button" to={"./n/"+n}>
         <button className="button">시작하기</button>
