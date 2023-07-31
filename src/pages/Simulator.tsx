@@ -1,4 +1,3 @@
-import Problem from '../class/Problem';
 import Problems from '../class/Problems';
 import { useParams } from "react-router-dom";
 import "../components/Restrict.css";
