@@ -77,8 +77,8 @@ const Simulator = () => {
     N = Number(useParams().n);
     if(N<1) N=1;
     else if(N>14) N=14;
-    
-    FPS = 1;
+
+    FPS = FPS_MIN;
     ALGO = new Algorithm(N);
     HISTORY = ALGO.getHistory();
     INDEX = 0;
