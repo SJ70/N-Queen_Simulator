@@ -16,7 +16,7 @@ class Problems{
 
     public searchProblem(code: number): Problem{
         for(let i=0; i<this.Arr.length; i++){
-            if(this.Arr[i].getCode() == code) return this.Arr[i];
+            if(this.Arr[i].getCode() === code) return this.Arr[i];
         }
         return this.Arr[0]; // 찾는 값이 없음 경우: 추후 예외처리 필요
     }

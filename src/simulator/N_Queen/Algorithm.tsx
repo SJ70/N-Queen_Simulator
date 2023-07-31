@@ -20,7 +20,7 @@ class Algorithm {
     }
 
     private BT(r:number, c:number): void{
-        if(r==this.N){
+        if(r===this.N){
             this.result++;
             return;
         }

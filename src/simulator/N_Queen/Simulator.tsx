@@ -39,9 +39,9 @@ const CANNOTPUT = 1;
 const putQueen = (r:number, c:number, dir:number): void => {
     let value = GETVALUE[r][c]();
     let put: number = (value<QUEEN) ? 1 : -1;
-    if(r==N-1){
-        if(put==1 && dir>0) RESULT++;
-        else if(put==-1 && dir<0) RESULT--;
+    if(r===N-1){
+        if(put===1 && dir>0) RESULT++;
+        else if(put===-1 && dir<0) RESULT--;
     }
     fillRed(r,c,put);
     USESTATES[r][c]( value + QUEEN*put );
@@ -69,7 +69,7 @@ const fillRed = (r:number, c:number, put:number): void => {
 }
 
 const isLastIndex = (i: number):boolean => {
-    return i==HISTORY.length;
+    return i===HISTORY.length;
 }
 
 const Simulator = () => {
@@ -210,7 +210,7 @@ const Column = ({row, column}: {row:number, column:number}) => {
     }
     GETVALUE[row][column] = getValue;
 
-    const style: string = ((row+column)%2==0) ? "black" : "white";
+    const style: string = ((row+column)%2===0) ? "black" : "white";
     const element: JSX.Element = (value>=QUEEN) ? (<img src={require("../../img/LightQueen.webp")}></img>) : (value>=CANNOTPUT) ? (<div className="red"/>) : (<div/>);
     return (
         <td className={style}>
