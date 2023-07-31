@@ -13,7 +13,7 @@ let N: number;
 let FPS: number;
 let ALGO: Algorithm;
 let HISTORY: number[];
-let USESTATE: React.Dispatch<React.SetStateAction<number>>[][];
+let USESTATES: React.Dispatch<React.SetStateAction<number>>[][];
 let GETVALUE: Function[][];
 let INDEX: number;
 let RESULT: number;
@@ -44,27 +44,27 @@ const putQueen = (r:number, c:number, dir:number): void => {
         else if(put==-1 && dir<0) RESULT--;
     }
     fillRed(r,c,put);
-    USESTATE[r][c]( value + QUEEN*put );
+    USESTATES[r][c]( value + QUEEN*put );
 }
 const fillRed = (r:number, c:number, put:number): void => {
     //가로세로
     for(let i=0; i<N; i++){
-        USESTATE[r][i]( GETVALUE[r][i]() + CANNOTPUT*put );
-        USESTATE[i][c]( GETVALUE[i][c]() + CANNOTPUT*put );
+        USESTATES[r][i]( GETVALUE[r][i]() + CANNOTPUT*put );
+        USESTATES[i][c]( GETVALUE[i][c]() + CANNOTPUT*put );
     }
     //우상향대각
     for(let i=1; r+i<N && c-i>=0; i++){
-        USESTATE[r+i][c-i]( GETVALUE[r+i][c-i]() + CANNOTPUT*put );
+        USESTATES[r+i][c-i]( GETVALUE[r+i][c-i]() + CANNOTPUT*put );
     }
     for(let i=-1; r+i>=0 && c-i<N; i--){
-        USESTATE[r+i][c-i]( GETVALUE[r+i][c-i]() + CANNOTPUT*put );
+        USESTATES[r+i][c-i]( GETVALUE[r+i][c-i]() + CANNOTPUT*put );
     }
     //우하향대각
     for(let i=1; r+i<N && c+i<N; i++){
-        USESTATE[r+i][c+i]( GETVALUE[r+i][c+i]() + CANNOTPUT*put );
+        USESTATES[r+i][c+i]( GETVALUE[r+i][c+i]() + CANNOTPUT*put );
     }
     for(let i=-1; r+i>=0 && c+i>=0; i--){
-        USESTATE[r+i][c+i]( GETVALUE[r+i][c+i]() + CANNOTPUT*put );
+        USESTATES[r+i][c+i]( GETVALUE[r+i][c+i]() + CANNOTPUT*put );
     }
 }
 
@@ -84,10 +84,10 @@ const Simulator = () => {
 
     document.documentElement.style.setProperty('--N',String(N));
 
-    USESTATE = new Array(N);
+    USESTATES = new Array(N);
     GETVALUE = new Array(N);
     for(let i=0; i<N; i++){
-        USESTATE[i] = new Array(N);
+        USESTATES[i] = new Array(N);
         GETVALUE[i] = new Array(N);
     }
 
@@ -204,7 +204,7 @@ const Row = ({N, row}: {N: number, row:number}) => {
 }
 const Column = ({row, column}: {row:number, column:number}) => {
     const [value, setValue] = useState<number>(0);
-    USESTATE[row][column] = setValue;
+    USESTATES[row][column] = setValue;
     const getValue = ():number => {
         return value;
     }
