@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { ChangeEvent, FocusEvent, useState } from 'react';
 import Algorithm from './Algorithm';
 import './Simulator.css';
 import { Decrypt } from './Crypto';
@@ -234,29 +234,25 @@ const ShowValue = ({name, value, maxValue}: {name:string, value:number, maxValue
 
 const FPSsetter = () => {
 
-    const [fps, setFps] = useState<number>(FPS);
+    const [fps, setFps] = useState<number>(FPS_MIN);
 
-    const setFpsValue = (str: string): void => {
-        FPS = getFpsValue(str);
+    const handleInputFocus = (e: FocusEvent<HTMLInputElement>) => {
+        e.target.select();
+    }
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        FPS = +e.target.value;
         setFps(FPS);
         STOP_AUTO();
-    }
-    const getFpsValue = (str: string): number => {
-        let fps = Number(str);
-        return getNumberValue(fps, FPS_MIN, FPS_MAX);
-    }
-    const getNumberValue = (n: number, min: number, max: number) => {
-        if(Number.isNaN(n)) return 1;
-        return (n>max)?max : (n<min)?min : n;
     }
 
     return(
         <div className="FPSsetter">
             <div className="row">
                 <span className="fps">FPS</span>
-                <input type="text" value={fps} onFocus={e => e.target.select()} onChange={e => setFpsValue(e.target.value)}></input>
+                <input type="text" value={fps} onFocus={handleInputFocus} onChange={handleInputChange}></input>
             </div>
-            <input type="range" value={fps} min={FPS_MIN} max={FPS_MAX} step={1} onChange={e => setFpsValue(e.target.value)}></input>
+            <input type="range" value={fps} min={FPS_MIN} max={FPS_MAX} step={1} onChange={handleInputChange}></input>
             <p className="desc">성능에 따라 실제 프레임 수와 다를 수 있습니다.</p>
         </div>
     )
