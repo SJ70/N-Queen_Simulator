@@ -106,7 +106,6 @@ const View = () =>{
     AUTO_FUNC = ():void => {
         if(!AUTO_TOGGLE || INDEX+1 > HISTORY.length){
             STOP_AUTO();
-            clearInterval(AUTO);
             return;
         } 
         let pos: number[] = Decrypt(HISTORY[INDEX]);
@@ -128,6 +127,7 @@ const View = () =>{
         setAutoToggle(true);
     }
     STOP_AUTO = ():void => {
+        clearInterval(AUTO);
         AUTO_TOGGLE = false;
         setAutoToggle(false);
     }
