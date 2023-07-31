@@ -6,8 +6,8 @@ import { Decrypt } from './Crypto';
 import { VscChevronLeft, VscChevronRight, VscDebugPause, VscDebugStart } from "react-icons/vsc"
 import GoBack from '../../components/GoBack';
 
-const fps_min: number = 1;
-const fps_max: number = 1000;
+const FPS_MIN: number = 1;
+const FPS_MAX: number = 1000;
 
 let N: number;
 let FPS: number;
@@ -243,7 +243,7 @@ const FPSsetter = () => {
     }
     const getFpsValue = (str: string): number => {
         let fps = Number(str);
-        return getNumberValue(fps,fps_min,fps_max);
+        return getNumberValue(fps, FPS_MIN, FPS_MAX);
     }
     const getNumberValue = (n: number, min: number, max: number) => {
         if(Number.isNaN(n)) return 1;
@@ -256,7 +256,7 @@ const FPSsetter = () => {
                 <span className="fps">FPS</span>
                 <input type="text" value={fps} onFocus={e => e.target.select()} onChange={e => setFpsValue(e.target.value)}></input>
             </div>
-            <input type="range" value={fps} min={fps_min} max={fps_max} step={1} onChange={e => setFpsValue(e.target.value)}></input>
+            <input type="range" value={fps} min={FPS_MIN} max={FPS_MAX} step={1} onChange={e => setFpsValue(e.target.value)}></input>
             <p className="desc">성능에 따라 실제 프레임 수와 다를 수 있습니다.</p>
         </div>
     )
