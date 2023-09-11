@@ -17,17 +17,24 @@ const Initializer = () => {
 
   return (
     <div className="Init">
-      <div className="N">
-        <div className="row">
-          <p>N = </p>
-          <input type="text" value={n} onFocus={handleInputFoucs} onChange={handleInputChange}></input>
-        </div>
-        <input type="range" value={n} min={N_MIN} max={N_MAX} step={1} onChange={e => setN(Number(e.target.value))}></input>
+      
+      <div className='title'>
+          <span className="queen">N-Queen Simulator</span>
       </div>
-      <Link className="button" to={"./n/"+n}>
-        <button className="button">시작하기</button>
-      </Link>
-      <p className="desc">성능에 따라 시간이 소요될 수 있습니다.</p>
+
+      <div className="form">
+        <div className="N">
+          <div className="row">
+            <p>N = </p>
+            <input type="text" value={n} onFocus={handleInputFoucs} onChange={handleInputChange}></input>
+          </div>
+          <input type="range" value={n} min={N_MIN} max={N_MAX} step={1} onChange={e => setN(Number(e.target.value))}></input>
+        </div>
+        <Link className="button" to={"./n/"+n}>
+          <button className="button">시작하기</button>
+        </Link>
+        <p className="desc">성능에 따라 시간이 소요될 수 있습니다.</p>
+      </div>
     </div>
   );
 }

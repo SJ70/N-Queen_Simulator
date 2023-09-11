@@ -2,6 +2,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5rem;
+    margin-bottom: .7rem;
+    width: 100%;
+}
+.title .queen{
+    font-size: 3.75rem;
+    font-weight: 100;
+    text-align: center;
+}
+
+.form {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     max-width: 20rem;
     width: 70%;
@@ -16,7 +37,6 @@
 }
 
 .N {
-    margin-top: calc(50vh - 12rem);
     width: 100%;
     display: flex;
     flex-direction: column;
