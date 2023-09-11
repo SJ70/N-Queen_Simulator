@@ -1,12 +1,10 @@
-import Problems from '../class/Problems';
-import { useParams } from "react-router-dom";
 import "../components/Restrict.css";
+import N_Queen from '../simulator/N_Queen/N_Queen';
 
-const Simulator = ({Probs}: {Probs:Problems}) => {
-    const id: number = Number(useParams().id);
+const Simulator = () => {
     return(
         <div className="Restrict">
-            {Probs.searchProblem(id).getComp()}
+            <N_Queen/>
         </div>
     ) 
 }
