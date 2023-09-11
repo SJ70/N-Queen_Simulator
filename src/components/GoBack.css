@@ -1,8 +1,8 @@
 .GoBack{
     position: absolute;
-    left: 0;
-    top: calc(var(--HeaderHeight) + .1rem);
-    font-size: 2rem;
+    left: .2rem;
+    top: .2rem;
+    font-size: 3rem;
     color: var(--gray);
 }
 
