@@ -67,10 +67,10 @@ td div {
     height: calc( var(--table_size) / var(--N) );
 }
 td img {
-    width: calc( var(--table_size) / var(--N) * 0.9 );
-    height: calc( var(--table_size) / var(--N) * 0.9 );
+    width: calc( var(--table_size) / var(--N) * 0.9 - 0.3rem);
+    height: calc( var(--table_size) / var(--N) * 0.9 - 0.3rem);
     object-fit: scale-down;
-    margin: 0;
+    margin-top: 0.2rem;
     padding: 0;
 }
 
