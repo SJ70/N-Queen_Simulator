@@ -1,25 +1,32 @@
 :root {
     --N: 1;
-    --table_size: calc(min(60vw, 60vh));
+    --table_size: calc(min(55vw, 55vh));
     user-select : none;
 }
 
 .Simulator{
     width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .view{
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 4.25rem;
+    margin-bottom: 5rem;
 }
 
 .top {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 1rem;
-    margin-bottom: .7rem;
+    margin-bottom: .5rem;
 }
 .top .n{
     font-size: 5rem;

@@ -96,6 +96,7 @@ const Simulator = () => {
 
     return (
         <div className='Simulator'>
+            <GoBack/>
             <View/>
         </div>
     )
@@ -137,8 +138,6 @@ const View = () =>{
     
     return(
         <div className='view'>
-            <GoBack/>
-
             <div className='top'>
                 <span className="n">{N}</span>
                 <span className="queen">-Queen</span>
