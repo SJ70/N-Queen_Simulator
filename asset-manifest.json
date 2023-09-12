@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/N-Queen_Simulator/static/css/main.be753853.css",
+    "main.js": "/N-Queen_Simulator/static/js/main.ed923780.js",
+    "static/media/LightQueen.webp": "/N-Queen_Simulator/static/media/LightQueen.660a490751785dcea625.webp",
+    "index.html": "/N-Queen_Simulator/index.html",
+    "main.be753853.css.map": "/N-Queen_Simulator/static/css/main.be753853.css.map",
+    "main.ed923780.js.map": "/N-Queen_Simulator/static/js/main.ed923780.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.be753853.css",
+    "static/js/main.ed923780.js"
+  ]
+}
